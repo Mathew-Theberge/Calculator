@@ -21,6 +21,7 @@ const displayOutput = document.querySelector(".display-output")
 
 function add(num1, num2) {
   displayOutput.textContent = num1 + num2
+  displayOutput.classList.add("bold")
 }
 
 function subtract(num1, num2) {
@@ -56,16 +57,17 @@ function operate(num1, num2, operator) {
   }
 }
 
-n1.addEventListener("click", () => displayOutput.textContent = displayValue += "1")
-n2.addEventListener("click", () => displayOutput.textContent = displayValue += "2")
-n3.addEventListener("click", () => displayOutput.textContent = displayValue += "3")
-n4.addEventListener("click", () => displayOutput.textContent = displayValue += "4")
-n5.addEventListener("click", () => displayOutput.textContent = displayValue += "5")
-n6.addEventListener("click", () => displayOutput.textContent = displayValue += "6")
-n7.addEventListener("click", () => displayOutput.textContent = displayValue += "7")
-n8.addEventListener("click", () => displayOutput.textContent = displayValue += "8")
-n9.addEventListener("click", () => displayOutput.textContent = displayValue += "9")
-n0.addEventListener("click", () => displayOutput.textContent = displayValue += "0")
+n1.addEventListener("click", () => {displayOutput.textContent = displayValue += "1";displayOutput.classList.remove("bold")})
+n2.addEventListener("click", () => {displayOutput.textContent = displayValue += "2";displayOutput.classList.remove("bold")})
+n3.addEventListener("click", () => {displayOutput.textContent = displayValue += "3";displayOutput.classList.remove("bold")})
+n4.addEventListener("click", () => {displayOutput.textContent = displayValue += "4";displayOutput.classList.remove("bold")})
+n5.addEventListener("click", () => {displayOutput.textContent = displayValue += "5";displayOutput.classList.remove("bold")})
+n6.addEventListener("click", () => {displayOutput.textContent = displayValue += "6";displayOutput.classList.remove("bold")})
+n7.addEventListener("click", () => {displayOutput.textContent = displayValue += "7";displayOutput.classList.remove("bold")})
+n8.addEventListener("click", () => {displayOutput.textContent = displayValue += "8";displayOutput.classList.remove("bold")})
+n9.addEventListener("click", () => {displayOutput.textContent = displayValue += "9";displayOutput.classList.remove("bold")})
+n0.addEventListener("click", () => {displayOutput.textContent = displayValue += "0";displayOutput.classList.remove("bold")})
+
 
 addButton.addEventListener("click", () => {
   if (operand1 === "") {
@@ -85,7 +87,19 @@ addButton.addEventListener("click", () => {
 })
 
 equalsButton.addEventListener("click", () => {
-  if (operand2 === "") {
+// the reason for the first if statement is solely to remove the bold class from the output number if equals is pressed when no value is set to operand1 this code is needed to make
+// the first output bold as in 6 = outputs a bold 6 when = is pressed again it removes the bold and sets a 0
+// i have to run the opertation to keep the number zero and not an empty string
+  if (operand1 === "") {
+    operand1 = +displayValue
+    operate(operand1, operand2, "add")
+    if (operand1 === 0) {
+      displayOutput.classList.remove("bold")
+    }
+    displayValue = ""
+    operand1 = ""
+    operand2 = ""
+  } else if (operand2 === "") {
     operand2 = +displayValue
     operate(operand1, operand2, operator)
     displayValue = ""
