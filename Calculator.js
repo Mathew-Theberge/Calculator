@@ -20,7 +20,7 @@ const addButton = document.querySelector(".add-button")
 const displayOutput = document.querySelector(".display-output")
 
 function add(num1, num2) {
-  return num1 + num2
+  displayOutput.textContent = num1 + num2
 }
 
 function subtract(num1, num2) {
@@ -35,10 +35,10 @@ function divide(num1, num2) {
   return num1 / num2
 }
 
-let displayValue
-let operand1
-let operand2
-let operator
+let displayValue = ""
+let operand1 = ""
+let operand2 = ""
+let operator = ""
 
 function operate(num1, num2, operator) {
   switch (operator) {
@@ -56,15 +56,47 @@ function operate(num1, num2, operator) {
   }
 }
 
-n1.addEventListener("click", () => displayOutput.textContent = displayValue = 1)
-n2.addEventListener("click", () => displayOutput.textContent = displayValue = 2)
-n3.addEventListener("click", () => displayOutput.textContent = displayValue = 3)
-n4.addEventListener("click", () => displayOutput.textContent = displayValue = 4)
-n5.addEventListener("click", () => displayOutput.textContent = displayValue = 5)
-n6.addEventListener("click", () => displayOutput.textContent = displayValue = 6)
-n7.addEventListener("click", () => displayOutput.textContent = displayValue = 7)
-n8.addEventListener("click", () => displayOutput.textContent = displayValue = 8)
-n9.addEventListener("click", () => displayOutput.textContent = displayValue = 9)
-n0.addEventListener("click", () => displayOutput.textContent = displayValue = 0)
+n1.addEventListener("click", () => displayOutput.textContent = displayValue += "1")
+n2.addEventListener("click", () => displayOutput.textContent = displayValue += "2")
+n3.addEventListener("click", () => displayOutput.textContent = displayValue += "3")
+n4.addEventListener("click", () => displayOutput.textContent = displayValue += "4")
+n5.addEventListener("click", () => displayOutput.textContent = displayValue += "5")
+n6.addEventListener("click", () => displayOutput.textContent = displayValue += "6")
+n7.addEventListener("click", () => displayOutput.textContent = displayValue += "7")
+n8.addEventListener("click", () => displayOutput.textContent = displayValue += "8")
+n9.addEventListener("click", () => displayOutput.textContent = displayValue += "9")
+n0.addEventListener("click", () => displayOutput.textContent = displayValue += "0")
 
+addButton.addEventListener("click", () => {
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+    operator = "add"
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  } else {
+    operand1 = operand1 + operand2
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  }
+})
 
+equalsButton.addEventListener("click", () => {
+  if (operand2 === "") {
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+    operand1 = ""
+    operand2 = ""
+  } else if (operand2 !== "") {
+    operand1 = operand1 + operand2
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+    operand1 = ""
+    operand2 = ""
+  }
+})
