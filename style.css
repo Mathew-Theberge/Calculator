@@ -1,3 +1,76 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
 .bold {
   font-weight: 700;
+}
+
+.main-container {
+  border: black solid 4px;
+  width: 312px;
+}
+
+button {
+  height: 65px;
+  width: 65px;
+  margin: 4px;
+  box-shadow: 2px 4px;
+  border: none;
+  font-size: 24px;
+} 
+
+.display-output {
+  text-align: left;
+  font-size: 60px;
+  padding-left: 8px;
+  background-color: antiquewhite;
+  border-bottom: black solid 4px;
+}
+
+.bottom-buttons {
+  display: flex;
+}
+
+.n0 {
+  flex-grow: 1;
+}
+
+.equals-button {
+  background-color: lightgreen;
+}
+
+.multiply-button,
+.divide-button,
+.add-button,
+.subtract-button,
+.exponent-button {
+  background-color: coral;
+}
+
+.main-button-container {
+  padding-bottom: 2px;
+}
+
+button:active {
+  box-shadow: 2px 2px;
+  transform: translateY(2px);
+}
+
+.clear-button {
+  background-color: rgb(243, 247, 41);
+}
+
+.negative-numbers-button {
+  background-color: crimson;
 }
