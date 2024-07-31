@@ -17,26 +17,28 @@ const divideButton = document.querySelector(".divide-button")
 const multiplyButton = document.querySelector(".multiply-button")
 const subtractButton = document.querySelector(".subtract-button")
 const addButton = document.querySelector(".add-button")
+const displayOutput = document.querySelector(".display-output")
 
 function add(num1, num2) {
   return num1 + num2
 }
 
 function subtract(num1, num2) {
-  return num1 - num2;
+  return num1 - num2
 }
 
 function multiply(num1, num2) {
-  return num1 * num2;
+  return num1 * num2
 }
 
 function divide(num1, num2) {
-  return num1 / num2;
+  return num1 / num2
 }
 
-let operand1 = 2
-let operand2 = 3
-let operator = "add"
+let displayValue
+let operand1
+let operand2
+let operator
 
 function operate(num1, num2, operator) {
   switch (operator) {
@@ -53,3 +55,16 @@ function operate(num1, num2, operator) {
       divide(num1, num2)
   }
 }
+
+n1.addEventListener("click", () => displayOutput.textContent = displayValue = 1)
+n2.addEventListener("click", () => displayOutput.textContent = displayValue = 2)
+n3.addEventListener("click", () => displayOutput.textContent = displayValue = 3)
+n4.addEventListener("click", () => displayOutput.textContent = displayValue = 4)
+n5.addEventListener("click", () => displayOutput.textContent = displayValue = 5)
+n6.addEventListener("click", () => displayOutput.textContent = displayValue = 6)
+n7.addEventListener("click", () => displayOutput.textContent = displayValue = 7)
+n8.addEventListener("click", () => displayOutput.textContent = displayValue = 8)
+n9.addEventListener("click", () => displayOutput.textContent = displayValue = 9)
+n0.addEventListener("click", () => displayOutput.textContent = displayValue = 0)
+
+
