@@ -36,6 +36,7 @@ button {
   padding-left: 8px;
   background-color: antiquewhite;
   border-bottom: black solid 4px;
+  overflow: hidden;
 }
 
 .bottom-buttons {

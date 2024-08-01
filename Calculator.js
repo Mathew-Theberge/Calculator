@@ -200,3 +200,10 @@ equalsButton.addEventListener("click", () => {
     operand2 = ""
   }
 })
+
+clearButton.addEventListener("click", () => {
+  displayOutput.textContent = 0
+  displayValue = ""
+  operand1 = ""
+  operand2 = ""
+})
