@@ -59,6 +59,16 @@ function divide(num1, num2) {
   }
 }
 
+function exponent(num1, num2) {
+  if (Math.floor(num1 ** num2) === num1 ** num2) {
+    displayOutput.textContent = num1 ** num2
+    displayOutput.classList.add("bold")
+  } else {
+    displayOutput.textContent = (num1 ** num2).toFixed(7)
+    displayOutput.classList.add("bold")
+  }
+}
+
 let displayValue = ""
 let operand1 = ""
 let operand2 = ""
@@ -77,6 +87,9 @@ function operate(num1, num2, operator) {
       break
     case "divide":
       divide(num1, num2)
+      break
+    case "exponent":
+      exponent(num1, num2)
   }
 }
 
@@ -160,6 +173,23 @@ divideButton.addEventListener("click", () => {
   }
 })
 
+exponentButton.addEventListener("click", () => {
+  operator = "exponent"
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  } else {
+    operand1 = operand1 ** operand2
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  }
+})
+
 equalsButton.addEventListener("click", () => {
 // the reason for the first if statement is solely to remove the bold class from the output number if equals is pressed when no value is set to operand1 this code is needed to make
 // the first output bold as in 6 = outputs a bold 6 when = is pressed again it removes the bold and sets a 0
@@ -192,6 +222,9 @@ equalsButton.addEventListener("click", () => {
         break
       case "divide":
         operand1 = operand1 / operand2
+        break
+      case "exponent":
+        operand1 = operand1 ** operand2
     }
     operand2 = +displayValue
     operate(operand1, operand2, operator)
