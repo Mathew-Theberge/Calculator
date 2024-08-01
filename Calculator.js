@@ -20,20 +20,43 @@ const addButton = document.querySelector(".add-button")
 const displayOutput = document.querySelector(".display-output")
 
 function add(num1, num2) {
-  displayOutput.textContent = num1 + num2
-  displayOutput.classList.add("bold")
+  if (Math.floor(num1 + num2) === num1 + num2) {
+    displayOutput.textContent = num1 + num2
+    displayOutput.classList.add("bold")
+  } else {
+    displayOutput.textContent = (num1 + num2).toFixed(7)
+    displayOutput.classList.add("bold")
+  }
 }
 
 function subtract(num1, num2) {
-  return num1 - num2
+  if (Math.floor(num1 - num2) === num1 - num2) {
+    displayOutput.textContent = num1 - num2
+    displayOutput.classList.add("bold")
+  } else {
+    displayOutput.textContent = (num1 - num2).toFixed(7)
+    displayOutput.classList.add("bold")
+  }
 }
 
 function multiply(num1, num2) {
-  return num1 * num2
+  if (Math.floor(num1 * num2) === num1 * num2) {
+    displayOutput.textContent = num1 * num2
+    displayOutput.classList.add("bold")
+  } else {
+    displayOutput.textContent = (num1 * num2).toFixed(7)
+    displayOutput.classList.add("bold")
+  }
 }
 
 function divide(num1, num2) {
-  return num1 / num2
+  if (Math.floor(num1 / num2) === num1 / num2) {
+    displayOutput.textContent = num1 / num2
+    displayOutput.classList.add("bold")
+  } else {
+    displayOutput.textContent = (num1 / num2).toFixed(7)
+    displayOutput.classList.add("bold")
+  }
 }
 
 let displayValue = ""
@@ -70,16 +93,67 @@ n0.addEventListener("click", () => {displayOutput.textContent = displayValue += 
 
 
 addButton.addEventListener("click", () => {
+  operator = "add"
   if (operand1 === "") {
     operand1 = +displayValue
     displayValue = ""
-    operator = "add"
   } else if (operand2 === "") {
     operand2 = +displayValue
     operate(operand1, operand2, operator)
     displayValue = ""
   } else {
     operand1 = operand1 + operand2
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  }
+})
+
+subtractButton.addEventListener("click", () => {
+  operator = "subtract"
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  } else {
+    operand1 = operand1 - operand2
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  }
+})
+
+multiplyButton.addEventListener("click", () => {
+  operator = "multiply"
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  } else {
+    operand1 = operand1 * operand2
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  }
+})
+
+divideButton.addEventListener("click", () => {
+  operator = "divide"
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    operate(operand1, operand2, operator)
+    displayValue = ""
+  } else {
+    operand1 = operand1 / operand2
     operand2 = +displayValue
     operate(operand1, operand2, operator)
     displayValue = ""
@@ -106,7 +180,19 @@ equalsButton.addEventListener("click", () => {
     operand1 = ""
     operand2 = ""
   } else if (operand2 !== "") {
-    operand1 = operand1 + operand2
+    switch (operator) {
+      case "add":
+        operand1 = operand1 + operand2
+        break
+      case "subtract":
+        operand1 = operand1 - operand2
+        break
+      case "multiply":
+        operand1 = operand1 * operand2
+        break
+      case "divide":
+        operand1 = operand1 / operand2
+    }
     operand2 = +displayValue
     operate(operand1, operand2, operator)
     displayValue = ""
