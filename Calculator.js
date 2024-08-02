@@ -114,22 +114,33 @@ function divide() {
 }
 
 function exponent() {
-  if (operand1 === "") {
-    operand1 = +displayValue
-    displayValue = ""
-  } else if (operand2 === "") {
-    operand2 = +displayValue
-    displayValue = ""
-    result = operand1 ** operand2
-    displayOutput.textContent = result
-  } else {
-    operand2 = +displayValue
-    displayValue = ""
-    if (!(operand2 === 0)) {
-      result = result ** operand2
-      displayOutput.textContent = result
-    }
-  }
+  if (!(displayValue === "")) {
+    if (operand1 === "") {
+      operand1 = +displayValue
+      displayValue = ""
+    } else if (operand2 === "") {
+      operand2 = +displayValue
+      displayValue = ""
+      if (operand2 === 0 || operand1 === 0) { 
+        operand1 = ""
+        operand2 = ""
+        displayOutput.textContent = 0
+      } else {
+        result = operand1 ** operand2
+        displayOutput.textContent = result
+      }
+    } else {
+      operand2 = +displayValue
+      displayValue = ""
+      if (operand2 === 0) {
+        operand1 = ""
+        operand2 = ""
+        displayOutput.textContent = 0
+      } else {
+        result = result ** operand2
+        displayOutput.textContent = result
+      }
+  }}
 }
 
 let displayValue = ""
