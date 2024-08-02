@@ -19,12 +19,38 @@ const subtractButton = document.querySelector(".subtract-button")
 const addButton = document.querySelector(".add-button")
 const displayOutput = document.querySelector(".display-output")
 
-function add(num1, num2) {
-
+function add() {
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    displayValue = ""
+    result = operand1 + operand2
+    displayOutput.textContent = result
+  } else {
+    operand2 = +displayValue
+    displayValue = ""
+    result = result + operand2
+    displayOutput.textContent = result
+  }
 }
 
-function subtract(num1, num2) {
-
+function subtract() {
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    displayValue = ""
+    result = operand1 - operand2
+    displayOutput.textContent = result
+  } else {
+    operand2 = +displayValue
+    displayValue = ""
+    result = result - operand2
+    displayOutput.textContent = result
+  }
 }
 
 function multiply(num1, num2) {
@@ -45,9 +71,6 @@ let operand2 = ""
 let operator = ""
 let result = ""
 
-function operate(num1, num2, operator) {
-
-}
 
 function updateDisplayOutput (num) {
   displayValue += num
@@ -66,5 +89,51 @@ n8.addEventListener("click",updateDisplayOutput.bind(null, "8"))
 n9.addEventListener("click",updateDisplayOutput.bind(null, "9"))
 n0.addEventListener("click",updateDisplayOutput.bind(null, "0"))
 
+addButton.addEventListener("click", () => {
+  switch (operator) {
+    case "subtract":
+      subtract()
+      operator = "add"
+      break
+    case "multiply":
+      multiply()
+      operator = "add"
+      break
+    case "divide":
+      divide()
+      operator = "add"
+      break
+    case "exponent":
+      exponent()
+      operator = "add"
+      break
+    default:
+      operator = "add"
+      add()
+  }
+})
 
+subtractButton.addEventListener("click", () => {
+  switch (operator) {
+    case "add":
+      add()
+      operator = "subtract"
+      break
+    case "multiply":
+      multiply()
+      operator = "subtract"
+      break
+    case "divide":
+      divide()
+      operator = "subtract"
+      break
+    case "exponent":
+      exponent()
+      operator = "subtract"
+      break
+    default:
+      operator = "subtract"
+      subtract()
+  }
+})
 
