@@ -62,9 +62,7 @@ function multiply() {
     operand2 = +displayValue
     displayValue = ""
     if (operand2 === 0 || operand1 === 0) { // if user tries to multiply by 0 we reset operands so we dont have the same problem of every future output being 0
-      operand1 = ""
-      operand2 = ""
-      displayOutput.textContent = 0
+      reset()
     } else {
       result = operand1 * operand2
       displayOutput.textContent = result
@@ -73,9 +71,7 @@ function multiply() {
       operand2 = +displayValue
       displayValue = ""
       if (operand2 === 0) {
-        operand1 = ""
-        operand2 = ""
-        displayOutput.textContent = 0
+        reset()
       } else {
         result = result * operand2
         displayOutput.textContent = result
@@ -122,9 +118,7 @@ function exponent() {
       operand2 = +displayValue
       displayValue = ""
       if (operand2 === 0 || operand1 === 0) { 
-        operand1 = ""
-        operand2 = ""
-        displayOutput.textContent = 0
+        reset()
       } else {
         result = operand1 ** operand2
         displayOutput.textContent = result
@@ -133,9 +127,7 @@ function exponent() {
       operand2 = +displayValue
       displayValue = ""
       if (operand2 === 0) {
-        operand1 = ""
-        operand2 = ""
-        displayOutput.textContent = 0
+        reset()
       } else {
         result = result ** operand2
         displayOutput.textContent = result
@@ -154,6 +146,14 @@ function updateDisplayOutput (num) {
   displayValue += num
   displayOutput.textContent = displayValue
   displayOutput.classList.remove("bold")
+}
+
+function reset() {
+  operand1 = ""
+  operand2 = ""
+  displayValue = ""
+  operator = ""
+  displayOutput.textContent = 0
 }
 
 n1.addEventListener("click",updateDisplayOutput.bind(null, "1"))
@@ -293,3 +293,25 @@ dotButton.addEventListener("click", () => {
     displayOutput.textContent = displayValue
   }
 })
+
+equalsButton.addEventListener("click", () => {
+  switch (operator) {
+    case "add":
+      if (displayValue === "") {reset()} else {add()}
+      break
+    case "multiply":
+      if (displayValue === "") {reset()} else {multiply()}
+      break
+    case "divide":
+      if (displayValue === "") {reset()} else {divide()}
+      break
+    case "subtract":
+      if (displayValue === "") {reset()} else {subtract()}
+      break
+    case "exponent":
+      if (displayValue === "") {reset()} else {exponent()}
+  }
+})
+
+
+clearButton.addEventListener("click", reset)
