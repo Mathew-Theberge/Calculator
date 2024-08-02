@@ -54,20 +54,33 @@ function subtract() {
 }
 
 function multiply() {
-  if (operand1 === "") {
-    operand1 = +displayValue
-    displayValue = ""
+  if (!(displayValue === "")) { // this is needed so the user doesent break the function by setting operand2 to 0 by hitting the multiply button more than once -->
+    if (operand1 === "") {      //  --> if operand2 is 0 result becomes 0 making every future calculation 0 because result (0) * operand 2 will always be 0
+      operand1 = +displayValue
+      displayValue = ""
   } else if (operand2 === "") {
     operand2 = +displayValue
     displayValue = ""
-    result = operand1 * operand2
-    displayOutput.textContent = result
+    if (operand2 === 0 || operand1 === 0) { // if user tries to multiply by 0 we reset operands so we dont have the same problem of every future output being 0
+      operand1 = ""
+      operand2 = ""
+      displayOutput.textContent = 0
+    } else {
+      result = operand1 * operand2
+      displayOutput.textContent = result
+    }
   } else {
-    operand2 = +displayValue
-    displayValue = ""
-    result = result * operand2
-    displayOutput.textContent = result
-  }
+      operand2 = +displayValue
+      displayValue = ""
+      if (operand2 === 0) {
+        operand1 = ""
+        operand2 = ""
+        displayOutput.textContent = 0
+      } else {
+        result = result * operand2
+        displayOutput.textContent = result
+      }
+  }}
 }
 
 function divide() {
@@ -82,8 +95,10 @@ function divide() {
   } else {
     operand2 = +displayValue
     displayValue = ""
-    result = result / operand2
-    displayOutput.textContent = result
+    if (!(operand2 === 0)) {
+      result = result / operand2
+      displayOutput.textContent = result
+    }
   }
 }
 
@@ -99,8 +114,10 @@ function exponent() {
   } else {
     operand2 = +displayValue
     displayValue = ""
-    result = result ** operand2
-    displayOutput.textContent = result
+    if (!(operand2 === 0)) {
+      result = result ** operand2
+      displayOutput.textContent = result
+    }
   }
 }
 
@@ -245,5 +262,12 @@ exponentButton.addEventListener("click", () => {
     default:
       operator = "exponent"
       exponent()
+  }
+})
+
+dotButton.addEventListener("click", () => {
+  if (!(displayValue.includes("."))) {
+    displayValue += "."
+    displayOutput.textContent = displayValue
   }
 })
