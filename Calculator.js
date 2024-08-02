@@ -53,16 +53,55 @@ function subtract() {
   }
 }
 
-function multiply(num1, num2) {
-
+function multiply() {
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    displayValue = ""
+    result = operand1 * operand2
+    displayOutput.textContent = result
+  } else {
+    operand2 = +displayValue
+    displayValue = ""
+    result = result * operand2
+    displayOutput.textContent = result
+  }
 }
 
-function divide(num1, num2) {
-
+function divide() {
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    displayValue = ""
+    result = operand1 / operand2
+    displayOutput.textContent = result
+  } else {
+    operand2 = +displayValue
+    displayValue = ""
+    result = result / operand2
+    displayOutput.textContent = result
+  }
 }
 
-function exponent(num1, num2) {
-
+function exponent() {
+  if (operand1 === "") {
+    operand1 = +displayValue
+    displayValue = ""
+  } else if (operand2 === "") {
+    operand2 = +displayValue
+    displayValue = ""
+    result = operand1 ** operand2
+    displayOutput.textContent = result
+  } else {
+    operand2 = +displayValue
+    displayValue = ""
+    result = result ** operand2
+    displayOutput.textContent = result
+  }
 }
 
 let displayValue = ""
@@ -137,3 +176,74 @@ subtractButton.addEventListener("click", () => {
   }
 })
 
+multiplyButton.addEventListener("click", () => {
+  switch (operator) {
+    case "add":
+      add()
+      operator = "multiply"
+      break
+    case "subtract":
+      subtract()
+      operator = "multiply"
+      break
+    case "divide":
+      divide()
+      operator = "multiply"
+      break
+    case "exponent":
+      exponent()
+      operator = "multiply"
+      break
+    default:
+      operator = "multiply"
+      multiply()
+  }
+})
+
+divideButton.addEventListener("click", () => {
+  switch (operator) {
+    case "add":
+      add()
+      operator = "divide"
+      break
+    case "multiply":
+      multiply()
+      operator = "divide"
+      break
+    case "subtract":
+      subtract()
+      operator = "divide"
+      break
+    case "exponent":
+      exponent()
+      operator = "divide"
+      break
+    default:
+      operator = "divide"
+      divide()
+  }
+})
+
+exponentButton.addEventListener("click", () => {
+  switch (operator) {
+    case "add":
+      add()
+      operator = "exponent"
+      break
+    case "multiply":
+      multiply()
+      operator = "exponent"
+      break
+    case "divide":
+      divide()
+      operator = "exponent"
+      break
+    case "subtract":
+      subtract()
+      operator = "exponent"
+      break
+    default:
+      operator = "exponent"
+      exponent()
+  }
+})
