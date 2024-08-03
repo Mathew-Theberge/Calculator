@@ -1,5 +1,5 @@
 const clearButton = document.querySelector(".clear-button")
-const negativeNumbersButton = document.querySelector(".negative-numbers-button")
+const backspaceButton = document.querySelector(".backspace-button")
 const exponentButton = document.querySelector(".exponent-button")
 const dotButton = document.querySelector(".dot-button")
 const equalsButton = document.querySelector(".equals-button")
@@ -315,3 +315,13 @@ equalsButton.addEventListener("click", () => {
 
 
 clearButton.addEventListener("click", reset)
+
+backspaceButton.addEventListener("click", () => {
+  if (displayValue.length > 1) {
+    displayValue = displayValue.slice(0, -1)
+    displayOutput.textContent = displayValue
+  } else {
+    displayValue = ""
+    displayOutput.textContent = 0
+  }
+})
