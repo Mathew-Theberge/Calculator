@@ -10,10 +10,11 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  background: linear-gradient(to right, rgb(85, 187, 255), rgb(228, 120, 231));
 }
 
 .bold {
-  font-weight: 700;
+  font-weight: 900;
 }
 
 .main-container {
@@ -25,22 +26,25 @@ button {
   height: 65px;
   width: 65px;
   margin: 4px;
-  box-shadow: 2px 4px;
+  box-shadow:0 3px;
   border: none;
   font-size: 24px;
+  background: linear-gradient(to top, rgb(224, 224, 224), rgb(148, 148, 148));
+  font-weight: 700;
 } 
 
 .display-output {
   text-align: left;
   font-size: 58px;
   padding-left: 8px;
-  background-color: antiquewhite;
+  background: rgb(250, 247, 242);
   border-bottom: black solid 4px;
   overflow: hidden;
 }
 
 .bottom-buttons {
   display: flex;
+  gap: 4px;
 }
 
 .n0 {
@@ -48,7 +52,7 @@ button {
 }
 
 .equals-button {
-  background-color: lightgreen;
+  background: lightgreen;
 }
 
 .multiply-button,
@@ -56,22 +60,23 @@ button {
 .add-button,
 .subtract-button,
 .exponent-button {
-  background-color: coral;
+  background: coral;
 }
 
 .main-button-container {
   padding-bottom: 2px;
+  background: rgb(250, 247, 242)
 }
 
 button:active {
-  box-shadow: 2px 2px;
+  box-shadow: 0 1px;
   transform: translateY(2px);
 }
 
 .clear-button {
-  background-color: rgb(243, 247, 41);
+  background: rgb(243, 247, 41);
 }
 
 .backspace-button {
-  background-color: crimson;
+  background: crimson;
 }

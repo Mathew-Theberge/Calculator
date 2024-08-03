@@ -29,6 +29,7 @@ function add() {
     result = operand1 + operand2
     result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    displayOutput.classList.add("bold")
     isNumberToBig(result.toString())
   } else {
     operand2 = +displayValue
@@ -36,6 +37,7 @@ function add() {
     result = result + operand2
     result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    displayOutput.classList.add("bold")
     isNumberToBig(result.toString())
   }
 }
@@ -50,6 +52,7 @@ function subtract() {
     result = operand1 - operand2
     result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    displayOutput.classList.add("bold")
     isNumberToBig(result.toString())
   } else {
     operand2 = +displayValue
@@ -57,6 +60,7 @@ function subtract() {
     result = result - operand2
     result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    displayOutput.classList.add("bold")
     isNumberToBig(result.toString())
   }
 }
@@ -75,6 +79,7 @@ function multiply() {
       result = operand1 * operand2
       result = +toOptionalFixed(result, 7)
       displayOutput.textContent = result
+      displayOutput.classList.add("bold")
       isNumberToBig(result.toString())
     }
   } else {
@@ -86,6 +91,7 @@ function multiply() {
         result = result * operand2
         result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        displayOutput.classList.add("bold")
         isNumberToBig(result.toString())
       }
   }}
@@ -107,6 +113,7 @@ function divide() {
         result = operand1 / operand2
         result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        displayOutput.classList.add("bold")
         isNumberToBig(result.toString())
       }
     } else {
@@ -120,6 +127,7 @@ function divide() {
         result = result / operand2
         result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        displayOutput.classList.add("bold")
         isNumberToBig(result.toString())
       }
   }}
@@ -139,6 +147,7 @@ function exponent() {
         result = operand1 ** operand2
         result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        displayOutput.classList.add("bold")
         isNumberToBig(result.toString())
       }
     } else {
@@ -150,6 +159,7 @@ function exponent() {
         result = result ** operand2
         result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        displayOutput.classList.add("bold")
         isNumberToBig(result.toString())
       }
   }}
@@ -175,6 +185,7 @@ function reset() {
   displayValue = ""
   operator = ""
   displayOutput.textContent = 0
+  displayOutput.classList.remove("bold")
 }
 
 function isNumberToBig (num) {
