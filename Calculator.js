@@ -27,12 +27,16 @@ function add() {
     operand2 = +displayValue
     displayValue = ""
     result = operand1 + operand2
+    result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    isNumberToBig(result.toString())
   } else {
     operand2 = +displayValue
     displayValue = ""
     result = result + operand2
+    result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    isNumberToBig(result.toString())
   }
 }
 
@@ -44,12 +48,16 @@ function subtract() {
     operand2 = +displayValue
     displayValue = ""
     result = operand1 - operand2
+    result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    isNumberToBig(result.toString())
   } else {
     operand2 = +displayValue
     displayValue = ""
     result = result - operand2
+    result = +toOptionalFixed(result, 7)
     displayOutput.textContent = result
+    isNumberToBig(result.toString())
   }
 }
 
@@ -65,7 +73,9 @@ function multiply() {
       reset()
     } else {
       result = operand1 * operand2
+      result = +toOptionalFixed(result, 7)
       displayOutput.textContent = result
+      isNumberToBig(result.toString())
     }
   } else {
       operand2 = +displayValue
@@ -74,7 +84,9 @@ function multiply() {
         reset()
       } else {
         result = result * operand2
+        result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        isNumberToBig(result.toString())
       }
   }}
 }
@@ -93,7 +105,9 @@ function divide() {
         displayOutput.textContent = "just why?"
       } else {
         result = operand1 / operand2
+        result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        isNumberToBig(result.toString())
       }
     } else {
       operand2 = +displayValue
@@ -104,7 +118,9 @@ function divide() {
         displayOutput.textContent = "just why?"
       } else {
         result = result / operand2
+        result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        isNumberToBig(result.toString())
       }
   }}
 }
@@ -121,7 +137,9 @@ function exponent() {
         reset()
       } else {
         result = operand1 ** operand2
+        result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        isNumberToBig(result.toString())
       }
     } else {
       operand2 = +displayValue
@@ -130,7 +148,9 @@ function exponent() {
         reset()
       } else {
         result = result ** operand2
+        result = +toOptionalFixed(result, 7)
         displayOutput.textContent = result
+        isNumberToBig(result.toString())
       }
   }}
 }
@@ -146,6 +166,7 @@ function updateDisplayOutput (num) {
   displayValue += num
   displayOutput.textContent = displayValue
   displayOutput.classList.remove("bold")
+  isNumberToBig(displayValue)
 }
 
 function reset() {
@@ -155,6 +176,17 @@ function reset() {
   operator = ""
   displayOutput.textContent = 0
 }
+
+function isNumberToBig (num) {
+  if (num.length > 10) {
+    reset()
+    displayOutput.textContent = "ERROR!"
+  }
+}
+
+const toOptionalFixed = (num, digits) => 
+  `${Number.parseFloat(num.toFixed(digits))}`
+
 
 n1.addEventListener("click",updateDisplayOutput.bind(null, "1"))
 n2.addEventListener("click",updateDisplayOutput.bind(null, "2"))
