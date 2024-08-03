@@ -321,8 +321,13 @@ exponentButton.addEventListener("click", () => {
 
 dotButton.addEventListener("click", () => {
   if (!(displayValue.includes("."))) {
-    displayValue += "."
-    displayOutput.textContent = displayValue
+    if (displayValue === "") {
+      displayValue = "0."
+      displayOutput.textContent = displayValue
+    } else {
+      displayValue += "."
+      displayOutput.textContent = displayValue
+    }
   }
 })
 
