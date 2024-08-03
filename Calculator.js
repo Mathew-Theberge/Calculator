@@ -364,3 +364,197 @@ backspaceButton.addEventListener("click", () => {
     }
   }
 })
+
+// keyboard support
+
+window.addEventListener("keydown", (event) => {
+  switch (event.key) {
+    case "1":
+      updateDisplayOutput("1")
+      break
+    case "2":
+      updateDisplayOutput("2")
+      break
+    case "3":
+      updateDisplayOutput("3")
+      break
+    case "4":
+      updateDisplayOutput("4")
+      break
+    case "5":
+      updateDisplayOutput("5")
+      break
+    case "6":
+      updateDisplayOutput("6")
+      break
+    case "7":
+      updateDisplayOutput("7")
+      break
+    case "8":
+      updateDisplayOutput("8")
+      break
+    case "9":
+      updateDisplayOutput("9")
+      break
+    case "0":
+      updateDisplayOutput("0")
+      break
+    case "Enter":
+      switch (operator) {
+        case "add":
+          if (displayValue === "") {reset()} else {add()}
+          break
+        case "multiply":
+          if (displayValue === "") {reset()} else {multiply()}
+          break
+        case "divide":
+          if (displayValue === "") {reset()} else {divide()}
+          break
+        case "subtract":
+          if (displayValue === "") {reset()} else {subtract()}
+          break
+        case "exponent":
+          if (displayValue === "") {reset()} else {exponent()}
+      }
+      break
+    case ".":
+      if (!(displayValue.includes("."))) {
+        if (displayValue === "") {
+          displayValue = "0."
+          displayOutput.textContent = displayValue
+        } else {
+          displayValue += "."
+          displayOutput.textContent = displayValue
+        }
+      }
+      break
+    case "Escape":
+      reset()
+      break
+    case "Backspace":
+      if (displayValue.length > 1) {
+        displayValue = displayValue.slice(0, -1)
+        displayOutput.textContent = displayValue
+      } else {
+        if (!(displayValue === "")) {
+          displayValue = ""
+          displayOutput.textContent = 0
+        }
+      }
+      break
+    case "/":
+      switch (operator) {
+        case "add":
+          add()
+          operator = "divide"
+          break
+        case "multiply":
+          multiply()
+          operator = "divide"
+          break
+        case "subtract":
+          subtract()
+          operator = "divide"
+          break
+        case "exponent":
+          exponent()
+          operator = "divide"
+          break
+        default:
+          operator = "divide"
+          divide()
+      }
+      break
+    case "*":
+      switch (operator) {
+        case "add":
+          add()
+          operator = "multiply"
+          break
+        case "subtract":
+          subtract()
+          operator = "multiply"
+          break
+        case "divide":
+          divide()
+          operator = "multiply"
+          break
+        case "exponent":
+          exponent()
+          operator = "multiply"
+          break
+        default:
+          operator = "multiply"
+          multiply()
+      }
+      break
+    case "+":
+      switch (operator) {
+        case "subtract":
+          subtract()
+          operator = "add"
+          break
+        case "multiply":
+          multiply()
+          operator = "add"
+          break
+        case "divide":
+          divide()
+          operator = "add"
+          break
+        case "exponent":
+          exponent()
+          operator = "add"
+          break
+        default:
+          operator = "add"
+          add()
+      }
+      break
+    case "-":
+      switch (operator) {
+        case "add":
+          add()
+          operator = "subtract"
+          break
+        case "multiply":
+          multiply()
+          operator = "subtract"
+          break
+        case "divide":
+          divide()
+          operator = "subtract"
+          break
+        case "exponent":
+          exponent()
+          operator = "subtract"
+          break
+        default:
+          operator = "subtract"
+          subtract()
+      }
+      break
+    case "^":
+      switch (operator) {
+        case "add":
+          add()
+          operator = "exponent"
+          break
+        case "multiply":
+          multiply()
+          operator = "exponent"
+          break
+        case "divide":
+          divide()
+          operator = "exponent"
+          break
+        case "subtract":
+          subtract()
+          operator = "exponent"
+          break
+        default:
+          operator = "exponent"
+          exponent()
+      }
+  }
+})
