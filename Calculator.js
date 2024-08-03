@@ -321,7 +321,9 @@ backspaceButton.addEventListener("click", () => {
     displayValue = displayValue.slice(0, -1)
     displayOutput.textContent = displayValue
   } else {
-    displayValue = ""
-    displayOutput.textContent = 0
+    if (!(displayValue === "")) {
+      displayValue = ""
+      displayOutput.textContent = 0
+    }
   }
 })
